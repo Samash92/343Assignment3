@@ -25,7 +25,7 @@
 typedef int Time;
 const Time MAX_TIME = INT_MAX;
 const Time TURNAROUND_TIME = 4;
-const Time TRANSFER_TIME = 6;
+const Time TRANSFER_TIME = 4;
 
 typedef int Ship_ID;
 

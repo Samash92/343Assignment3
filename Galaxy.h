@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 
-#include "priority.h"
+#include "Priority.h"
 
 typedef int Time;
 const Time MAX_TIME = INT_MAX;

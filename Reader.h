@@ -1,3 +1,8 @@
+#ifndef READER_H
+#define READER_H
+
+#include "Galaxy.h"
+
 class Reader {
 public:
   Reader(std::istream& in, Travel_Times* constraints);
@@ -6,42 +11,44 @@ public:
 private:
   static const int MIN_LAYOVER_TIME;
 
-  // Read next leg of ship's route
+  //Read next leg of ship's route
   bool get_record();
 
-  // Verify that that current leg is a valid continuation of the
-  // previous leg or the beginning of the route for another ship.
+  //Verify that that current leg is a valid continuation of the
+  //previous leg or the beginning of the route for another ship.
   bool validate();
 
   std::istream& in;
 
-  // Data structure holding the travel times between planets.
+  //Data structure holding the travel times between planets.
   Travel_Times* constraints;
 
-  // Input string representing a single leg.
+  //Input string representing a single leg.
   string current_input_line;
 
-  // Previous leg information for validation.
+  //Previous leg information for validation.
   Ship_ID previous_ship_id;
   Planet* previous_destination_planet;
   int previous_arrival_time;
 
-  // Current leg information
+  //Current leg information
   Ship_ID ship_id;
   Planet* departure_planet;
   Time departure_time;
   Planet* destination_planet;
   Time arrival_time;
 
-  // Planet name to planet object
+  //Planet name to planet object
   map<string, Planet*> planets;
 
-  // Planet-name pair to edge object
+  //Planet-name pair to edge object
   map<const Planet*, map<const Planet*, Edge*> > edges;
 
-  // Ship name to id.
+  //Ship name to id.
   map<string, Ship_ID> ships;
 
-  // Route structure under construction.
+  //Route structure under construction.
   Galaxy* galaxy;
 };
+
+#endif

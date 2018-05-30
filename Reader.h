@@ -2,10 +2,11 @@
 #define READER_H
 
 #include "Galaxy.h"
+#include <map>
 
 class Reader {
 public:
-  Reader(std::istream& in, Travel_Times* constraints);
+  //Reader(std::istream& in, Travel_Times* constraints);
   Galaxy* load();
 
 private:
@@ -21,10 +22,10 @@ private:
   std::istream& in;
 
   //Data structure holding the travel times between planets.
-  Travel_Times* constraints;
+  //Travel_Times* constraints;
 
   //Input string representing a single leg.
-  string current_input_line;
+  std::string current_input_line;
 
   //Previous leg information for validation.
   Ship_ID previous_ship_id;
@@ -39,13 +40,13 @@ private:
   Time arrival_time;
 
   //Planet name to planet object
-  map<string, Planet*> planets;
+  std::map<std::string, Planet*> planets;
 
   //Planet-name pair to edge object
-  map<const Planet*, map<const Planet*, Edge*> > edges;
+  std::map<const Planet*, std::map<const Planet*, Edge*> > edges;
 
   //Ship name to id.
-  map<string, Ship_ID> ships;
+  std::map<std::string, Ship_ID> ships;
 
   //Route structure under construction.
   Galaxy* galaxy;

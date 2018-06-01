@@ -3,11 +3,12 @@
 
 #include "Galaxy.h"
 #include <map>
+#include <fstream>
 #include "TravelTimes.h"
 
 class Reader {
 public:
-  Reader(std::istream& in, Travel_Times* constraints);
+  Reader(std::ifstream& in, Travel_Times* constraints);
   Galaxy* load();
 
 private:
@@ -19,7 +20,7 @@ private:
   //previous leg or the beginning of the route for another ship.
   bool validate();
 
-  std::istream& in;
+  std::ifstream& in;
 
   //Data structure holding the travel times between planets.
   Travel_Times* constraints;

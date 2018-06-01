@@ -1,22 +1,21 @@
 #include "TravelTimes.h"
 
 Travel_Times::Travel_Times(std::ifstream& inStream) {
-    fConduitCount = 0;
-    fInputStream = inStream; 
+    fConduitCount = 0; 
 	std::string nextLine;
 	std::string tokens[3];
-	while (fInputStream.getline(nextLine) {
-		nextLine = fInputStream.getline(); 
-		char* tokenizer;
-		tokenizer = strok(nextLine, "\t");
-		int i = 0;
-		while (tokenizer != nullptr) {
-			tokens[i] = tokenizer;
-			tokenizer = strok(NULL, "\t");
-			i++;
-		}
+	while (!inStream.eof()) {
+		std::getline(inStream, nextLine);
+		if (nextLine == "")
+			continue;
 
-		fConduitMap[tokens[0]].insert(std::pair<std::string, int>(tokens[1], atoi(tokens[2]);
+		//std::cerr << nextLine << std::endl;
+		std::stringstream stringS(nextLine);
+		for (int i = 0; i < 3; i++) {
+			std::getline(stringS, tokens[i], '\t');
+			//std::cerr << "Token " << i << ": " << tokens[i] << std::endl;
+		}
+		fConduitMap[tokens[0]].insert(std::pair<std::string, int>(tokens[1], atoi(tokens[2].c_str())));
 		++fConduitCount;
 	}
 }
@@ -29,10 +28,10 @@ void Travel_Times::dump() {
 	std::map<std::string, std::map<std::string, int>>::iterator conduitIterator;
 	std::map<std::string, int>::iterator destinationIterator;
 	for (conduitIterator : fConduitMap) {
-		std::cout << "New Origin: " << std::endl;
-		for (destinationIterator : conduitIterator->second) {
-			std::cout << "--> Origin: " << conduitIterator->first << " Destination: " << destinationIterator->first << " Travel Time: " << destinationIterator->second << std::endl;
+		std::cerr << "New Origin: " << std::endl;
+		for (destinationIterator : conduitIterator.second) {
+			std::cerr << "--> Origin: " << conduitIterator.first << " Destination: " << destinationIterator.first << " Travel Time: " << destinationIterator.second << std::endl;
 		}
 	}
-	std::cout << "Total Number of Conduits: " << fConduitCount << std::endl;
+	std::cerr << "Total Number of Conduits: " << fConduitCount << std::endl;
 }

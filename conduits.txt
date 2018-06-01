@@ -9,7 +9,7 @@ Alderaan	Hoth	27
 Alderaan	Sullust	213
 Alderaan	Tatooine	7
 Alderaan	Yavin	5
-Bespin  Corellia	6
+Bespin	Corellia	6
 Bespin	Coruscant	158
 Bespin	Dagobah	27
 Bespin	Dantooine	22

@@ -3,15 +3,15 @@
 
 #include "Galaxy.h"
 #include <map>
+#include "TravelTimes.h"
 
 class Reader {
 public:
-  //Reader(std::istream& in, Travel_Times* constraints);
+  Reader(std::istream& in, Travel_Times* constraints);
   Galaxy* load();
 
 private:
   static const int MIN_LAYOVER_TIME;
-
   //Read next leg of ship's route
   bool get_record();
 
@@ -22,7 +22,7 @@ private:
   std::istream& in;
 
   //Data structure holding the travel times between planets.
-  //Travel_Times* constraints;
+  Travel_Times* constraints;
 
   //Input string representing a single leg.
   std::string current_input_line;

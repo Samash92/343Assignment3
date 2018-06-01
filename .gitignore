@@ -31,3 +31,6 @@
 *.out
 *.app
 .vscode/launch.json
+
+#VisualStudios stuff 
+.vs/

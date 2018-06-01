@@ -9,4 +9,6 @@ int main(int argc, char* argv[]) {
 	conduitTimes->dump();
 	inputStream.close();
 	delete conduitTimes;
+
+	return 0;
 }

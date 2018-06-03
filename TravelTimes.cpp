@@ -25,11 +25,9 @@ int Travel_Times::conduitTravelTime(const std::string& origin, const std::string
 }
 
 void Travel_Times::dump() {
-	std::map<std::string, std::map<std::string, int>>::iterator conduitIterator;
-	std::map<std::string, int>::iterator destinationIterator;
-	for (conduitIterator : fConduitMap) {
+	for (auto conduitIterator : fConduitMap) {
 		std::cerr << "New Origin: " << std::endl;
-		for (destinationIterator : conduitIterator.second) {
+		for (auto destinationIterator : conduitIterator.second) {
 			std::cerr << "--> Origin: " << conduitIterator.first << " Destination: " << destinationIterator.first << " Travel Time: " << destinationIterator.second << std::endl;
 		}
 	}

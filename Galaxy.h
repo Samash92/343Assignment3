@@ -78,6 +78,7 @@ class Itinerary {
 public:
   Itinerary(Planet* origin): origin(origin) {}
   void print(Fleet& fleet, std::ostream& out=std::cout);
+  void buildItinerary();
 
   Planet* origin;
   std::vector<Planet*> destinations;
@@ -163,6 +164,8 @@ private:
 // adding edges to the planet objects.
 class Galaxy {
 public:
+  //This destructor will begin the process of deallocating all dynamically allocated objects. 
+  ~Galaxy();
   void add(Planet * planet) {planets.push_back(planet);}
 
   void reset() {for (auto planet: planets) {planet->reset();}}

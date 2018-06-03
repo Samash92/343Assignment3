@@ -1,0 +1,32 @@
+Enterprise	Corporate Sector	0	Mon Calamarai	1
+Enterprise	Mon Calamrai	5	Bakura	27
+Enterprise	Bakura	31	Kessel	58
+Enterprise	Kessel	62	Hapes Cluster	74
+Enterprise	Hapes Cluster	78	Corporate Sector	85
+Enterprise	Corporate Sector	89	Mon Calamarai	90
+Enterprise	Mon Calamrai	94	Bakura	116
+Enterprise	Bakura	120	Kessel	147
+Enterprise	Kessel	151	Hapes Cluster	163
+Enterprise	Hapes Cluster	167	Corporate Sector	174
+Defiant	Corellia	0	Kessel	10
+Defiant	Kessel	14	Corellia	24
+Defiant Corellia 28	Chandrila	30
+Defiant	Chandrila	34	Corellia	36
+Defiant	Corellia	40	Kessel	50
+Defiant Kessel	62	Corellia	72
+Defiant	Corellia	80	Bespin	86
+Defiant	Bespin	92	Corellia	98
+Defiant	Corellia	102	Brentaal	105
+Defiant	Brentaal	109	Corellia	112
+Defiant	Corellia	130	Kessel	140
+Defiant	Kessel	141	Corellia	151
+Defiant	Corellia	155	Yaga Minor	157
+Defiant	Yaga Minor	165	Corellia	177
+Defiant	Corellia	182	Bespin	190
+Defiant	Bespin	195	Corellia	201
+Voyager	Kashyyyk	0	Myrkr	55
+Voyager	Myrkr	59	Wayland	80
+Voyager	Wayland	84	Yaga Minor	114
+Voyager	Yaga Minor	118	Kashyyyk	171
+Voyager	Kashyyyk	175	Coruscant	218	
+Voyager	

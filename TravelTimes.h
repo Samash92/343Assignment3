@@ -17,7 +17,8 @@ int fConduitCount;
 
 public: 
 Travel_Times(std::ifstream& inStream); 
-int conduitTravelTime(const std::string& origin, const std::string& destination); 
+int conduitTravelTime(const std::string& origin, const std::string& destination);
+std::map<std::string, std::map<std::string, int>> getConduitMap() { return fConduitMap; }
 void dump();
 };
 

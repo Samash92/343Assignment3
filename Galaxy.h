@@ -55,6 +55,9 @@ public:
     : id(id), departure_time(departure_time), arrival_time(arrival_time) {
   }
 
+  Leg(const Leg& copiedLeg) : id(copiedLeg.id), departure_time(copiedLeg.departure_time), arrival_time(copiedLeg.arrival_time) {
+  }
+
   // Return negative, zero, or positive for left leg arriving before,
   // same time, or after the right leg (respectively
   static int compare(const Leg& left, const Leg& right) {
@@ -112,6 +115,8 @@ class Planet {
 public:
   Planet(const std::string& name): name(name) {}
   void add(Edge* e) {edges.push_back(e);}
+  bool operator==(const Planet& rightPlanet) { return name == rightPlanet.name; }
+  std::string getName() { return name; }
 
   // reset() clears the fields set by Dijkstra's algorithm so the
   // algorithm may be re-run with a different origin planet.

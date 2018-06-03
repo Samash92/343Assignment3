@@ -19,7 +19,8 @@ private:
   static const int MIN_LAYOVER_TIME;
   //Read next leg of ship's route
   bool get_record(std::ifstream& routeInStream);
-
+  void dumpCurrentLeg();
+  void dumpPreviousLeg();
   //Verify that that current leg is a valid continuation of the
   //previous leg or the beginning of the route for another ship.
   bool validate();
@@ -34,6 +35,9 @@ private:
   Ship_ID fPrevious_ship_id;
   Planet* fPrevious_destination_planet;
   int previous_arrival_time;
+
+  //Read in line
+  std::string fCurrentLine;
 
   //Current leg information
   Ship_ID fShip_ID;

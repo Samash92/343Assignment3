@@ -24,6 +24,9 @@ private:
   //Verify that that current leg is a valid continuation of the
   //previous leg or the beginning of the route for another ship.
   bool validate();
+  bool validateTravelTime();
+  bool validateEdges();
+  bool validateDeparturePlanet();
 
   //Data structure holding the travel times between planets.
   Travel_Times* fConstraints;
@@ -32,6 +35,7 @@ private:
   std::string fCurrent_input_line;
 
   //Previous leg information for validation.
+  std::string fPreviousShipName;
   Ship_ID fPrevious_ship_id;
   Planet* fPrevious_destination_planet;
   int previous_arrival_time;
@@ -40,6 +44,7 @@ private:
   std::string fCurrentLine;
 
   //Current leg information
+  std::string fShipName;
   Ship_ID fShip_ID;
   Planet* fDeparture_Planet;
   Time fDeparture_Time;

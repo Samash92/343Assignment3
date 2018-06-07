@@ -4,6 +4,7 @@
 #include "Galaxy.h"
 #include <map>
 #include <fstream>
+#include <iomanip>
 #include "TravelTimes.h"
 
 class Reader {
@@ -21,6 +22,9 @@ private:
   bool get_record(std::ifstream& routeInStream);
   void dumpCurrentLeg();
   void dumpPreviousLeg();
+  void dumpPlanets();
+  void dumpEdges();
+  void dumpShips();
   //Verify that that current leg is a valid continuation of the
   //previous leg or the beginning of the route for another ship.
   bool validate();

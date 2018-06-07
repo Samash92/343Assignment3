@@ -95,6 +95,7 @@ public:
 class Edge {
 public:
   Edge(Planet* destination): destination(destination) {}
+  ~Edge();
   void add(Leg& leg) {departures.push_back(leg);}
 
   // sort(): sort the legs of this edge by arrival time to the
@@ -114,6 +115,7 @@ public:
 class Planet {
 public:
   Planet(const std::string& name): name(name) {}
+  ~Planet();
   void add(Edge* e) {edges.push_back(e);}
   bool operator==(const Planet& rightPlanet) { return name == rightPlanet.name; }
   std::string getName() { return name; }

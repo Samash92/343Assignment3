@@ -58,21 +58,16 @@ Reader::~Reader() {
 }
 
 //Loads in the routestructure and verifies it against constraints file and planets/edges maps
-Galaxy* Reader::load(std::ifstream& routeInputStream) {
+Galaxy* Reader::load() {
 	
 	//Add each planet to the galaxy
 	for (auto planet : fPlanets) {
 		fGalaxy->add(planet.second);
 	}
-	
-	if (!routeInputStream.is_open()) {
-		std::cerr << "Error: Route Tables file is not open." << std::endl;
-		exit(EXIT_FAILURE);
-	}
 
-	while (!routeInputStream.eof()) {
+	while (!std::cin.eof()) {
 		//if get_record returns false, some error with reading in the next record.
-		if (!get_record(routeInputStream)) {
+		if (!get_record()) {
 			std::cerr << "Failure to read record. Exiting..." << std::endl;
 			exit(EXIT_FAILURE);
 		}
@@ -93,8 +88,12 @@ Galaxy* Reader::load(std::ifstream& routeInputStream) {
 }	
 
 
-bool Reader::get_record(std::ifstream& routeInStream) {
-	std::getline(routeInStream, fCurrentLine);
+bool Reader::get_record() {
+	std::cin >> fCurrentLine;
+	//Lines that are empty, begin with the comment character (#) or are just a new line
+	//we skip. 
+	if (fCurrentLine == "" || fCurrentLine.at(0) == '#' || fCurrentLine.at(0) == '\n')
+		return true;
 	std::stringstream stringS(fCurrentLine);
 	std::string routeTokens[5];
 	for (int i = 0; i < 5; i++) {

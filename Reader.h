@@ -13,13 +13,13 @@ public:
   //Because the reader class is allocating pointers, will only clear all the structures, will not deallocate.
   //Deallocation will be handled by the Galaxy object. re
   ~Reader();
-  Galaxy* load(std::ifstream& routeInStream);
+  Galaxy* load();
   void dumpPreLoadStructures();
 
 private:
   static const int MIN_LAYOVER_TIME;
   //Read next leg of ship's route
-  bool get_record(std::ifstream& routeInStream);
+  bool get_record();
   void dumpCurrentLeg();
   void dumpPreviousLeg();
   void dumpPlanets();

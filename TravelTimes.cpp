@@ -15,7 +15,10 @@ Travel_Times::Travel_Times(std::ifstream& inStream) {
 			std::getline(stringS, tokens[i], '\t');
 			//std::cerr << "Token " << i << ": " << tokens[i] << std::endl;
 		}
+		//insert origin->destination
 		fConduitMap[tokens[0]].insert(std::pair<std::string, int>(tokens[1], atoi(tokens[2].c_str())));
+		//insert destination->origin
+		fConduitMap[tokens[1]].insert(std::pair<std::string, int>(tokens[0], atoi(tokens[2].c_str())));
 		++fConduitCount;
 	}
 }

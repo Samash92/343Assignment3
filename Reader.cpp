@@ -76,8 +76,9 @@ Galaxy* Reader::load(std::ifstream& routeInputStream) {
 			std::cerr << "Failure to read record. Exiting..." << std::endl;
 			exit(EXIT_FAILURE);
 		}
-		dumpCurrentLeg();
+		
 		dumpPreviousLeg();
+		dumpCurrentLeg();
 		fEdges[fDeparture_Planet][fDestination_Planet]->add(Leg(fShip_ID, fDeparture_Time, fArrival_Time));
 
 		fPreviousShipName = fShipName;
@@ -187,6 +188,79 @@ bool Reader::validateDeparturePlanet() {
 
 	return true;
 }
+
+
+void Reader::dumpPreLoadStructures() {
+	std::cerr << "Dumping data structures used to build the galaxy..." << std::endl;
+
+	dumpPlanets();
+	dumpShips();
+	dumpEdges();
+}
+
+void Reader::dumpPlanets() {
+	std::cerr << "Dumping the planets..." << std::endl;
+	int planetCount = 1;
+	for (auto planet : fPlanets) {
+		std::cerr << planetCount << ": " << planet.first << " is at [" << planet.second << "]" << std::endl;
+		++planetCount;
+	}
+	std::cerr << "Total Number of Planets: " << planetCount << std::endl;
+	std::cerr << "...Done!" << std::endl;
+
+}
+
+void Reader::dumpShips() {
+	std::cerr << "Dumping ships..." << std::endl;
+	int shipCounter = 1;
+	for (auto ship : fShips) {
+		std::cerr << shipCounter << ": Ship Name: " << ship.first << " Ship ID: " << ship.second << std::endl;
+		++shipCounter;
+	}
+
+	std::cerr << "Total Number of Ships: " << shipCounter << std::endl;
+	std::cerr << "...Done!" << std::endl;
+}
+
+void Reader::dumpEdges() {
+	std::cerr << "Dumping connections between planets..." << std::endl;
+	int edgeCount = 1;
+	int originCounter = 1;
+	for (auto origin : fEdges) {
+		std::string originName = origin.first->name;
+		int edgeCounter = 1;
+		std::cerr << originCounter << ": " << "Origin Planet: " << originName << std::endl;
+		for (auto edge : origin.second) {
+			std::string destinationName = edge.first->name;
+			std::cerr << std::setw(5) << "-->" << edgeCounter << ": Destination Planet: " << edge.first->name << " Travel Time: " << fConstraints->conduitTravelTime(originName, destinationName) << std::endl;
+			int legCounter = 1;
+			for (auto leg : edge.second->departures) {
+				std::cerr << std::setw(10) << "-->" << legCounter << ": ShipID: " << leg.id << " Departing at: " << leg.departure_time << " Arriving at: " << leg.arrival_time << std::endl;
+				++legCounter;
+			}
+			++edgeCounter;
+			++edgeCount;
+		}
+		originCounter++;
+	}
+
+	std::cerr << "Total Number of Connections: " << edgeCount << std::endl;
+	std::cerr << "...Done!" << std::endl;
+}
+
+
+void Reader::dumpCurrentLeg() {
+	std::cerr << "Current Leg:" << std::endl;
+	std::cerr << std::setw(5) << "-->" << "Ship Name: " << fShipName << " Ship ID: " << fShip_ID << " Departure Planet: " << fDeparture_Planet
+		<< " Departure Time: " << fDeparture_Time << " Destination Planet: " << fDestination_Planet << " Arrival Time: " << fArrival_Time << std::endl;
+}
+
+void Reader::dumpPreviousLeg() {
+	std::cerr << "Previous Leg:" << std::endl;
+	std::cerr << std::setw(5) << "-->" << "Ship Name: " << fPreviousShipName << " Ship ID: " << fPrevious_ship_id
+		<< " Destination Planet: " << fPrevious_destination_planet << " Arrival Time: " << previous_arrival_time << std::endl;
+}
+
 
 
 

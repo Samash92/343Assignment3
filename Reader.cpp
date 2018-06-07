@@ -200,7 +200,7 @@ void Reader::dumpPreLoadStructures() {
 
 void Reader::dumpPlanets() {
 	std::cerr << "Dumping the planets..." << std::endl;
-	int planetCount = 1;
+	int planetCount = 0;
 	for (auto planet : fPlanets) {
 		std::cerr << planetCount << ": " << planet.first << " is at [" << planet.second << "]" << std::endl;
 		++planetCount;
@@ -212,7 +212,7 @@ void Reader::dumpPlanets() {
 
 void Reader::dumpShips() {
 	std::cerr << "Dumping ships..." << std::endl;
-	int shipCounter = 1;
+	int shipCounter = 0;
 	for (auto ship : fShips) {
 		std::cerr << shipCounter << ": Ship Name: " << ship.first << " Ship ID: " << ship.second << std::endl;
 		++shipCounter;
@@ -224,16 +224,16 @@ void Reader::dumpShips() {
 
 void Reader::dumpEdges() {
 	std::cerr << "Dumping connections between planets..." << std::endl;
-	int edgeCount = 1;
-	int originCounter = 1;
+	int edgeCount = 0;
+	int originCounter = 0;
 	for (auto origin : fEdges) {
 		std::string originName = origin.first->name;
-		int edgeCounter = 1;
+		int edgeCounter = 0;
 		std::cerr << originCounter << ": " << "Origin Planet: " << originName << std::endl;
 		for (auto edge : origin.second) {
 			std::string destinationName = edge.first->name;
 			std::cerr << std::setw(5) << "-->" << edgeCounter << ": Destination Planet: " << edge.first->name << " Travel Time: " << fConstraints->conduitTravelTime(originName, destinationName) << std::endl;
-			int legCounter = 1;
+			int legCounter = 0;
 			for (auto leg : edge.second->departures) {
 				std::cerr << std::setw(10) << "-->" << legCounter << ": ShipID: " << leg.id << " Departing at: " << leg.departure_time << " Arriving at: " << leg.arrival_time << std::endl;
 				++legCounter;

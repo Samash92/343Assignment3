@@ -127,7 +127,7 @@ bool Reader::validate() {
 			return false;
 		}
 
-		if (!validateTravelTime) {
+		if (!validateTravelTime()) {
 			return false;
 		}
 

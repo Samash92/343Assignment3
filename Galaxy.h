@@ -96,7 +96,7 @@ class Edge {
 public:
   Edge(Planet* destination): destination(destination) {}
   ~Edge();
-  void add(Leg& leg) {departures.push_back(leg);}
+  void add(Leg leg) {departures.push_back(leg);}
 
   // sort(): sort the legs of this edge by arrival time to the
   // destination planet.

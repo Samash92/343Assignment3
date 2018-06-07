@@ -18,7 +18,7 @@ Edge::~Edge() {
 	departures.clear();
 }
 void Edge::sort() {
-	//TODO
+	std::sort(departures.begin(), departures.end(), Leg::less_than);
 }
 
 void Edge::dump(Galaxy* galaxy) {

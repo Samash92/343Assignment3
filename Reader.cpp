@@ -83,6 +83,13 @@ Galaxy* Reader::load() {
 
 	}
 
+	//sort legs of all edges in graph
+	std::cerr << "Sorting legs..." << std::endl;
+	for (auto planets : fEdges) {
+		for (auto edges : planets.second) {
+			edges.second->sort();
+		}
+	}
 
 	return fGalaxy;
 }	

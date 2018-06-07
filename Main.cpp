@@ -9,7 +9,8 @@ int main(int argc, char* argv[]) {
 		std::cerr << "No conduits file has been specified." << std::endl;
 		return EXIT_FAILURE;
 	}
-
+	std::string conduitsFile = argv[0];
+	std::cerr << "Conduit File input: " << conduitsFile << std::endl;
 	std::ifstream inputStream(argv[0]);
 	Travel_Times* conduitTimes = new Travel_Times(inputStream);
 	conduitTimes->dump();

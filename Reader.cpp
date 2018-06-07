@@ -89,7 +89,8 @@ Galaxy* Reader::load() {
 
 
 bool Reader::get_record() {
-	std::cin >> fCurrentLine;
+	std::getline(std::cin, fCurrentLine);
+	std::cerr << "Current Line Read In: " << fCurrentLine << std::endl;
 	//Lines that are empty, begin with the comment character (#) or are just a new line
 	//we skip. 
 	if (fCurrentLine == "" || fCurrentLine.at(0) == '#' || fCurrentLine.at(0) == '\n')

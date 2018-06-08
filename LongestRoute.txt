@@ -1,0 +1,10 @@
+Hyperion	Alderaan	93	Endor	111
+Hyperion	Endor	115	Bespin	147
+Defiant	Bespin	468	Corellia	474
+Defiant	Corellia	685	Brentaal	688
+Defiant	Brentaal	692	Rhinnal	697
+Defiant	Rhinnal	701	Ralltiir	702
+Defiant	Ralltiir	706	Chandrila	710
+Defiant	Chandrila	714	Esseles	717
+Defiant	Esseles	721	Corulag	725
+Route Stats-> Total Time In Space: [76 hours] Overall Travel Time: [725 hours]

@@ -82,7 +82,7 @@ public:
 // leg[i].
 class Itinerary {
 public:
-  Itinerary() : origin(nullptr), fTotalTravelTime(), fTimeInSpace() {}
+  Itinerary() : origin(nullptr), fTotalTravelTime(0), fTimeInSpace(0) {}
   Itinerary(Planet* origin): origin(origin) {}
   void print(Fleet& fleet, std::ostream& out=std::cout);
   void buildItinerary();

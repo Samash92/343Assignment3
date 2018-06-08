@@ -17,6 +17,7 @@ int main(int argc, char* argv[]) {
 	Reader reader(conduitTimes);
 	Galaxy* galaxy = reader.load();
 	reader.dumpPreLoadStructures();
+	galaxy->search();
 	delete conduitTimes;
 	delete galaxy;
 

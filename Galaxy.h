@@ -16,10 +16,12 @@
 
 #include <climits>
 #include <iostream>
+#include <fstream>
 #include <ostream>
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
 #include "Priority.h"
 
@@ -80,11 +82,14 @@ public:
 // leg[i].
 class Itinerary {
 public:
+  Itinerary() : origin(nullptr), fTotalTravelTime(), fTimeInSpace() {}
   Itinerary(Planet* origin): origin(origin) {}
   void print(Fleet& fleet, std::ostream& out=std::cout);
   void buildItinerary();
 
   Planet* origin;
+  int fTotalTravelTime;
+  int fTimeInSpace;
   std::vector<Planet*> destinations;
   std::vector<Leg> legs;
 };
@@ -115,15 +120,18 @@ public:
 //  Dijkstra's shortest-path algorithm.
 class Planet {
 public:
-  Planet(const std::string& name): name(name) {}
+  Planet(const std::string& name): name(name){}
   ~Planet();
   void add(Edge* e) {edges.push_back(e);}
   bool operator==(const Planet& rightPlanet) { return name == rightPlanet.name; }
   std::string getName() { return name; }
-
+  bool validateRouteSuccessful() { return !(best_leg.arrival_time == MAX_TIME); }
+  void setOriginBestLeg() { predecessor = nullptr; best_leg.departure_time = 0; best_leg.arrival_time = 0; }
+  Planet* getPredecessor() { return predecessor; }
+  Leg getBestLeg() { return best_leg; }
   // reset() clears the fields set by Dijkstra's algorithm so the
   // algorithm may be re-run with a different origin planet.
-  void reset() {predecessor = nullptr; best_leg = Leg();}
+  void reset() { predecessor = nullptr; best_leg = Leg(); }
 
   // search() computes the shortest path from the Planet to each of the
   // other planets and returns the furthest planet by travel time.
@@ -188,6 +196,7 @@ public:
   void dump();
   void dump_routes(Planet* origin, std::ostream& out=std::cerr);
 
+  Itinerary* fFurthestPlanetItin;
   Fleet fleet;
   std::vector<Planet*> planets;
 };

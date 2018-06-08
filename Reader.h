@@ -4,7 +4,6 @@
 #include "Galaxy.h"
 #include <map>
 #include <fstream>
-#include <iomanip>
 #include "TravelTimes.h"
 
 class Reader {
